@@ -171,10 +171,8 @@ nav {
 }
 
 .hero-badge {
-  text-align:center; width:100%;
-  font-size:0.75rem; font-weight:600; color:var(--accent);
-  letter-spacing:0.06em; padding:0.3rem 0;
-  border-top:1px solid var(--divider); border-bottom:1px solid var(--divider);
+  font-size:0.65rem; font-weight:700; color:var(--accent);
+  letter-spacing:0.06em; margin-top:0.35rem;
 }
 
 .profile-cta {
