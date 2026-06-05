@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alejandro Andres — Freelance Full-Stack Developer</title>
+<meta name="description" content="Full-stack developer building AI-powered web applications. Laravel, React, Vue, Tailwind, MySQL, Redis."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tech">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-sun"></i>
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+
+  <div class="hero-stack fade-up">
+
+    <div class="hero-center fade-up">
+      <img class="profile-img" src="profile.jpg" alt="Alejandro Andres"/>
+      <div class="profile-name">Alejandro Andres</div>
+      <div class="profile-title">Freelance Full-Stack Developer</div>
+      <div class="profile-cta">
+        <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Hire Me</a>
+        <a href="#" class="btn btn-outline"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+      </div>
+    </div>
+
+    <div class="code-showcase fade-up">
+        <div class="code-tabs">
+          <button class="code-tab active" data-lang="laravel">Laravel</button>
+          <button class="code-tab" data-lang="react">React</button>
+          <button class="code-tab" data-lang="deepseek">DeepSeek</button>
+          <button class="code-tab" data-lang="queue">Queue</button>
+        </div>
+        <div class="code-panel">
+          <div class="code-panel-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot amber"></span>
+            <span class="code-dot green"></span>
+          </div>
+          <pre class="code-snippet active" data-lang="laravel"><code><span class="kw">class</span> <span class="fn">ChatController</span> <span class="kw">extends</span> Controller
+{
+    <span class="kw">use</span> <span class="fn">HandlesReasoningFlow</span>;
+    <span class="kw">use</span> <span class="fn">HandlesImageContext</span>;
+    <span class="kw">use</span> <span class="fn">HandlesFileAttachments</span>;
+    <span class="kw">use</span> <span class="fn">HandlesDirectSSEStream</span>;
+
+    <span class="kw">public function</span> <span class="fn">stream</span>(<span class="prop">Request</span> $req)
+    {
+        <span class="fn">set_time_limit</span>(<span class="str">600</span>);
+
+        <span class="cm">// Rate limiting per subscription plan</span>
+        <span class="fn">$plan</span> = <span class="kw">auth</span>()-><span class="fn">user</span>()-><span class="prop">subscription_plan</span>;
+        <span class="fn">$maxPerHour</span> = <span class="kw">app</span>(<span class="fn">SubscriptionPlanService</span>::<span class="kw">class</span>)
+            -><span class="fn">getFeature</span>(<span class="fn">$plan</span>, <span class="str">'max_messages_per_hour'</span>);
+
+        <span class="cm">// Validate &amp; route to AI model</span>
+        <span class="kw">return</span> <span class="fn">$this</span>-><span class="fn">processStream</span>(<span class="fn">$req</span>, <span class="kw">fn</span>() =>
+            <span class="fn">DeepSeekService</span>::<span class="fn">chat</span>(
+                <span class="prop">model</span>: <span class="str">'deepseek-v4-pro'</span>,
+                <span class="prop">messages</span>: <span class="fn">$req</span>-><span class="prop">messages</span>,
+                <span class="prop">stream</span>: <span class="kw">true</span>,
+                <span class="prop">contextWindow</span>: <span class="str">1_000_000</span>
+            )
+        );
+    }
+}</code></pre>
+          <pre class="code-snippet" data-lang="react"><code><span class="kw">import</span> { <span class="fn">useMemo</span>, <span class="fn">useRef</span>, <span class="fn">useEffect</span> } <span class="kw">from</span> <span class="str">'react'</span>;
+<span class="kw">import</span> <span class="fn">ReactMarkdown</span> <span class="kw">from</span> <span class="str">'react-markdown'</span>;
+<span class="kw">import</span> <span class="fn">remarkGfm</span> <span class="kw">from</span> <span class="str">'remark-gfm'</span>;
+
+<span class="cm">/** Word-level streaming animation */</span>
+<span class="kw">function</span> <span class="fn">AnimatedText</span>({ children }) {
+    <span class="kw">if</span> (<span class="kw">typeof</span> children !== <span class="str">'string'</span>) {
+        <span class="kw">if</span> (<span class="fn">Array</span>.<span class="fn">isArray</span>(children)) {
+            <span class="kw">return</span> children.<span class="fn">map</span>((child, i) => {
+                <span class="kw">if</span> (<span class="kw">typeof</span> child === <span class="str">'string'</span>) {
+                    <span class="kw">return</span> <span class="tag">&lt;AnimatedText key={i}&gt;</span>{child}<span class="tag">&lt;/AnimatedText&gt;</span>;
+                }
+                <span class="kw">return</span> <span class="tag">&lt;React.Fragment key={i}&gt;</span>{child}<span class="tag">&lt;/React.Fragment&gt;</span>;
+            });
+        }
+        <span class="kw">return</span> children;
+    }
+
+    <span class="kw">const</span> parts = children.<span class="fn">split</span>(<span class="str">/(\s+)/</span>);
+    <span class="kw">return</span> parts.<span class="fn">map</span>((part, i) =>
+        <span class="tag">&lt;span</span> <span class="prop">key</span>={i} <span class="prop">className</span>=<span class="str">"stream-word"</span><span class="tag">&gt;</span>{part}<span class="tag">&lt;/span&gt;</span>
+    );
+}</code></pre>
+          <pre class="code-snippet" data-lang="deepseek"><code><span class="kw">class</span> <span class="fn">DeepSeekService</span>
+{
+    <span class="kw">protected const</span> <span class="prop">BASE_URL</span> = <span class="str">'https://api.deepseek.com/v1'</span>;
+    <span class="kw">protected const</span> <span class="prop">CONTEXT_LIMIT</span> = <span class="str">1_000_000</span>;
+
+    <span class="kw">public static function</span> <span class="fn">chat</span>(<span class="kw">array</span> <span class="fn">$config</span>): <span class="fn">Stream</span>
+    {
+        <span class="fn">$response</span> = <span class="fn">Http</span>::<span class="fn">timeout</span>(<span class="str">120</span>)
+            -><span class="fn">withHeaders</span>([
+                <span class="str">'Authorization'</span> => <span class="str">'Bearer '</span> . <span class="fn">config</span>(<span class="str">'deepseek.key'</span>),
+                <span class="str">'Content-Type'</span> => <span class="str">'application/json'</span>,
+            ])
+            -><span class="fn">send</span>(<span class="str">'POST'</span>, <span class="kw">self</span>::<span class="prop">BASE_URL</span> . <span class="str">'/chat/completions'</span>, [
+                <span class="str">'stream'</span> => <span class="kw">true</span>,
+                <span class="str">'body'</span> => <span class="fn">json_encode</span>([
+                    <span class="str">'model'</span> => <span class="fn">$config</span>[<span class="str">'model'</span>],
+                    <span class="str">'messages'</span> => <span class="fn">$config</span>[<span class="str">'messages'</span>],
+                    <span class="str">'max_tokens'</span> => <span class="str">4096</span>,
+                    <span class="str">'temperature'</span> => <span class="str">0.7</span>,
+                ]),
+            ]);
+
+        <span class="kw">return</span> <span class="kw">new</span> <span class="fn">SSEStream</span>(<span class="fn">$response</span>-><span class="fn">toPsrResponse</span>());
+    }
+}</code></pre>
+          <pre class="code-snippet" data-lang="queue"><code><span class="kw">class</span> <span class="fn">ProcessServerOwnedTextRun</span> <span class="kw">implements</span> ShouldQueue
+{
+    <span class="kw">use</span> <span class="fn">Dispatchable</span>, <span class="fn">InteractsWithQueue</span>,
+        <span class="fn">Queueable</span>, <span class="fn">SerializesModels</span>;
+
+    <span class="kw">public function</span> <span class="fn">__construct</span>(
+        <span class="kw">protected</span> <span class="fn">ChatGenerationRun</span> <span class="fn">$run</span>,
+        <span class="kw">protected</span> <span class="kw">array</span> <span class="fn">$payload</span>,
+        <span class="kw">protected</span> <span class="kw">int</span> <span class="fn">$userId</span>,
+    ) {}
+
+    <span class="kw">public function</span> <span class="fn">handle</span>(): <span class="kw">void</span>
+    {
+        <span class="fn">$service</span> = <span class="kw">app</span>(<span class="fn">TextModelRouterService</span>::<span class="kw">class</span>);
+
+        <span class="fn">$result</span> = <span class="fn">$service</span>-><span class="fn">route</span>(
+            <span class="prop">model</span>: <span class="fn">$this</span>-><span class="prop">payload</span>[<span class="str">'model'</span>],
+            <span class="prop">prompt</span>: <span class="fn">$this</span>-><span class="prop">payload</span>[<span class="str">'message'</span>],
+            <span class="prop">stream</span>: <span class="kw">false</span>,
+        );
+
+        <span class="fn">$this</span>-><span class="prop">run</span>-><span class="fn">saveResponse</span>(<span class="fn">$result</span>);
+        <span class="fn">BroadcastRunComplete</span>::<span class="fn">dispatch</span>(<span class="fn">$this</span>-><span class="prop">run</span>);
+    }
+}</code></pre>
+        </div>
+      </div>
+
+    </div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Building the future, one line at a time.</h2>
+    <p class="section-desc">Self-taught full-stack developer from Panabo, Philippines — building AI-powered SaaS platforms and modern web applications.</p>
+
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>I'm a freelance full-stack developer focused on <strong>Laravel</strong> and <strong>React/Vue</strong> ecosystems, with deep experience integrating AI models into production-ready web applications.</p>
+        <p>As a solo developer, I handle everything — from database architecture and API design to real-time systems and polished frontends. I ship clean, maintainable code that solves real problems.</p>
+        <p>Currently exploring the cutting edge of AI-powered web platforms and pushing boundaries on what a single developer can build.</p>
+      </div>
+      <div class="about-highlights fade-up">
+        <div class="highlight-card">
+          <div class="num">5+</div>
+          <div class="label">AI Models Integrated</div>
+        </div>
+        <div class="highlight-card">
+          <div class="num">20+</div>
+          <div class="label">Music Studio Features</div>
+        </div>
+        <div class="highlight-card">
+          <div class="num">Full</div>
+          <div class="label">Stack Ownership</div>
+        </div>
+        <div class="highlight-card">
+          <div class="num">1</div>
+          <div class="label">Massive SaaS Built Solo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tech">
+  <div class="section-inner">
+    <div class="section-label">Tech Stack</div>
+    <h2 class="section-title">Tools &amp; technologies I work with.</h2>
+    <p class="section-desc">Modern, production-grade stack for scalable web applications.</p>
+
+    <div class="tech-block fade-up">
+      <h3><span class="dot fe"></span> Frontend</h3>
+      <div class="tech-grid">
+        <div class="tech-item"><div class="icon"><i class="devicon-react-original colored"></i></div><span class="tooltip">React</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-vuejs-plain colored"></i></div><span class="tooltip">Vue.js</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-javascript-plain colored"></i></div><span class="tooltip">JavaScript</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-typescript-plain colored"></i></div><span class="tooltip">TypeScript</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-tailwindcss-original colored"></i></div><span class="tooltip">TailwindCSS</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-bootstrap-plain colored"></i></div><span class="tooltip">Bootstrap</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-html5-plain colored"></i></div><span class="tooltip">HTML5</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-css3-plain colored"></i></div><span class="tooltip">CSS3</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-vitejs-plain colored"></i></div><span class="tooltip">Vite</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-alpinejs-plain colored"></i></div><span class="tooltip">Alpine.js</span></div>
+      </div>
+    </div>
+
+    <div class="tech-block fade-up">
+      <h3><span class="dot be"></span> Backend</h3>
+      <div class="tech-grid">
+        <div class="tech-item"><div class="icon"><i class="devicon-laravel-original colored"></i></div><span class="tooltip">Laravel</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-php-plain colored"></i></div><span class="tooltip">PHP</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-python-plain colored"></i></div><span class="tooltip">Python</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-nodejs-plain colored"></i></div><span class="tooltip">Node.js</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-mysql-original colored"></i></div><span class="tooltip">MySQL</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-postgresql-plain colored"></i></div><span class="tooltip">PostgreSQL</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-mongodb-plain colored"></i></div><span class="tooltip">MongoDB</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-redis-plain colored"></i></div><span class="tooltip">Redis</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-firebase-plain colored"></i></div><span class="tooltip">Firebase</span></div>
+      </div>
+    </div>
+
+    <div class="tech-block fade-up">
+      <h3><span class="dot" style="background:#f0883e"></span> Tools &amp; Desktop</h3>
+      <div class="tech-grid">
+        <div class="tech-item"><div class="icon"><i class="devicon-electron-original colored"></i></div><span class="tooltip">Electron</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-docker-plain colored"></i></div><span class="tooltip">Docker</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-git-plain colored"></i></div><span class="tooltip">Git</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-github-original colored"></i></div><span class="tooltip">GitHub</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-figma-plain colored"></i></div><span class="tooltip">Figma</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-vscode-plain colored"></i></div><span class="tooltip">VS Code</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-postman-plain colored"></i></div><span class="tooltip">Postman</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-npm-original-wordmark colored"></i></div><span class="tooltip">npm</span></div>
+        <div class="tech-item"><div class="icon"><i class="devicon-bash-plain"></i></div><span class="tooltip">Bash</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="section-inner">
+    <div class="section-label">Featured Project</div>
+    <h2 class="section-title">Root AI — Multi-Model AI platform.</h2>
+    <p class="section-desc">A full SaaS platform built solo — AI chat, music studio, video generation, and more.</p>
+
+    <div class="project-showcase fade-up">
+      <div class="project-header">
+        <div class="subtitle">Laravel 13 &middot; React 19 &middot; TailwindCSS 4 &middot; MySQL &middot; Redis</div>
+        <h3>Root AI</h3>
+        <p class="desc">An all-in-one AI creative platform featuring multi-model chat with DeepSeek V4 Flash, DeepSeek V4 Pro, and DeepSeek Reasoner with 1M context, plus a full music studio with 20+ features, video generation, interactive code artifacts with live preview, collaborative workspaces with GitHub integration, Filament admin dashboard, and subscription management — built by a single developer.</p>
+        <a href="https://root-ai.org" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:0.5rem;font-size:0.78rem;">Live Demo <i class="fa-solid fa-arrow-right" style="font-size:0.6rem;margin-left:0.3rem"></i></a>
+      </div>
+
+      <div class="project-preview">
+        <img src="root-ai-preview.png" alt="Root AI Platform Preview"/>
+      </div>
+
+      <div class="project-body">
+        <div class="project-grid">
+          <div class="project-feature-col">
+            <h4><i class="fa-solid fa-brain" style="margin-right:0.35rem"></i> Core Features</h4>
+            <ul class="feature-list">
+              <li><i class="fa-solid fa-check"></i> Multi-model AI Chat — DeepSeek V4 Flash, Pro, Reasoner with streaming</li>
+              <li><i class="fa-solid fa-check"></i> File uploads, image generation, web search, conversation memory</li>
+              <li><i class="fa-solid fa-check"></i> Interactive artifacts — code/content generation with live preview</li>
+              <li><i class="fa-solid fa-check"></i> Collaborative workspaces with GitHub repository integration</li>
+            </ul>
+          </div>
+          <div class="project-feature-col">
+            <h4><i class="fa-solid fa-music" style="margin-right:0.35rem"></i> Music &amp; Video Studio</h4>
+            <ul class="feature-list">
+              <li><i class="fa-solid fa-check"></i> Text-to-music, lyrics generation, vocal separation</li>
+              <li><i class="fa-solid fa-check"></i> Covers, mashups, track extension, add/remove vocals</li>
+              <li><i class="fa-solid fa-check"></i> WAV conversion, MIDI generation, music video creation</li>
+              <li><i class="fa-solid fa-check"></i> Text-to-video and image-to-video generation</li>
+            </ul>
+          </div>
+          <div class="project-feature-col">
+            <h4><i class="fa-solid fa-shield-halved" style="margin-right:0.35rem"></i> Admin &amp; Infrastructure</h4>
+            <ul class="feature-list">
+              <li><i class="fa-solid fa-check"></i> Filament 5 admin panel — users, roles, subscriptions</li>
+              <li><i class="fa-solid fa-check"></i> Subscription plans + usage tracking via PayMongo</li>
+              <li><i class="fa-solid fa-check"></i> Real-time WebSocket broadcasting via Laravel Reverb</li>
+              <li><i class="fa-solid fa-check"></i> Background queues via Laravel Horizon + Redis</li>
+            </ul>
+          </div>
+          <div class="project-feature-col">
+            <h4><i class="fa-solid fa-microchip" style="margin-right:0.35rem"></i> Tech Stack Used</h4>
+            <ul class="feature-list">
+              <li><i class="fa-solid fa-check"></i> Backend — Laravel 13, PHP 8.3, MySQL, Redis</li>
+              <li><i class="fa-solid fa-check"></i> Frontend — React 19, Vue 3, Alpine.js, TailwindCSS 4, Vite 7</li>
+              <li><i class="fa-solid fa-check"></i> AI — DeepSeek V4 Flash, DeepSeek V4 Pro, DeepSeek Reasoner, KIE AI, Zhipu Vision</li>
+              <li><i class="fa-solid fa-check"></i> DevOps — Laravel Reverb, Horizon, Cloudflare Tunnel</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-stats">
+          <div class="project-stat">
+            <div class="val">22</div>
+            <div class="lbl">Database Tables</div>
+          </div>
+          <div class="project-stat">
+            <div class="val">20+</div>
+            <div class="lbl">Music Features</div>
+          </div>
+          <div class="project-stat">
+            <div class="val">5</div>
+            <div class="lbl">AI Models</div>
+          </div>
+          <div class="project-stat">
+            <div class="val">Solo</div>
+            <div class="lbl">Developer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's build something together.</h2>
+    <p class="section-desc">Available for freelance projects. Send me a message and let's talk.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3>Get in touch</h3>
+        <p>Have a project in mind or want to collaborate? I'm open to freelance opportunities.</p>
+        <div class="contact-links">
+          <a href="mailto:javelcnathan31@gmail.com" class="contact-link">
+            <i class="fa-solid fa-envelope"></i> javelcnathan31@gmail.com
+          </a>
+          <a href="https://github.com/RHKfullstack" target="_blank" rel="noopener" class="contact-link">
+            <i class="fa-brands fa-github"></i> RHKfullstack
+          </a>
+          <span class="contact-link">
+            <i class="fa-solid fa-location-dot"></i> Panabo, Philippines
+          </span>
+        </div>
+      </div>
+
+      <form class="contact-form fade-up" action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+        <input type="hidden" name="access_key" value="b76fa147-ffbc-4f06-b317-b9fa4c19a356">
+        <input type="hidden" name="subject" value="New Portfolio Inquiry from AlejandroAndres.dev">
+        <input type="hidden" name="redirect" value="false">
+        <input type="text" name="name" placeholder="Your name" required/>
+        <input type="email" name="email" placeholder="Your email" required/>
+        <textarea name="message" placeholder="Hi Alejandro, I'm looking for a developer to..." rows="4" required></textarea>
+        <button type="submit" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+        <p class="form-status" style="display:none;margin-top:0.5rem;font-size:0.8rem;color:var(--backend);">Message sent! I'll get back to you soon.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Open for freelance work
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
