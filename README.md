@@ -1,8 +1,8 @@
-# Alejandro Andres — Freelance Full-Stack Developer
+# John Doe — Freelance Full-Stack Developer
 
 My personal portfolio website showcasing my work as a full-stack developer.
 
-**Live:** [portfolio-dro1.vercel.app](https://portfolio-dro1.vercel.app)
+**Live:** [portfolio-sample.vercel.app](https://portfolio-sample.vercel.app)
 
 ## Built With
 
@@ -44,9 +44,9 @@ portfolio/
 
 ## Contact
 
-- **Email:** javelcnathan31@gmail.com
-- **GitHub:** [RHKfullstack](https://github.com/RHKfullstack)
-- **Location:** Panabo, Philippines
+- **Email:** hello@johndoe.dev
+- **GitHub:** [johndoe](https://github.com/johndoe)
+- **Location:** Metro Manila, Philippines
 
 ---
 
