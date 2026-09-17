@@ -1,8 +1,11 @@
-# John Doe — Freelance Full-Stack Developer
+# Alejandro Andres — Freelance Full-Stack Developer
 
-My personal portfolio website showcasing my work as a full-stack developer.
+Personal portfolio site for Alejandro Andres — a self-taught full-stack developer
+from Panabo, Davao del Norte, Philippines, building AI-powered SaaS platforms,
+AI coding agents, and Electron desktop apps.
 
-**Live:** [portfolio-sample.vercel.app](https://portfolio-sample.vercel.app)
+**Live:** [portfolio-dro1.vercel.app](https://portfolio-dro1.vercel.app)
+**Featured project:** [root-ai.org](https://root-ai.org)
 
 ## Built With
 
@@ -17,37 +20,53 @@ My personal portfolio website showcasing my work as a full-stack developer.
 
 - White/Dark theme toggle
 - Scroll spy navigation with animated markers
-- Interactive code showcase with tab switching
+- Interactive code showcase with tab switching (Laravel / React / DeepSeek / Queue / Agent)
 - Scroll-triggered fade animations
 - Fully responsive (desktop, tablet, mobile)
 - Working contact form
 
 ## Sections
 
-- **Hero** — profile, name, title, hire/contact CTA
-- **About** — background, highlights
+- **Hero** — profile, name, title, hire/download CV CTA, code showcase
+- **About** — background, highlights (22 models, 70+ routes, 2 desktop apps)
 - **Tech Stack** — frontend, backend, tools & desktop
-- **Featured Project** — Root AI case study
-- **Contact** — email, GitHub, contact form
+- **Services** — 9 offerings incl. AI coding agents, real-time/queues, deployment & ops
+- **Featured Project** — Root AI case study (platform + agent + desktop suite)
+- **Contact** — email, GitHub, live project link, contact form
+
+## Featured Project — Root AI
+
+Laravel 13 · React 19 · TailwindCSS 4 · MySQL · Redis · Electron
+
+An all-in-one AI creative platform (multi-model chat, DeepSearch, file analysis,
+image generation, voice I/O, music & video studio, artifacts, workspaces) plus:
+
+- **Project Repair Agent** — an AI coding agent that inspects, edits, backs up and
+  verifies files on the user's own machine through the Root AI Agent desktop app.
+- **Workers Manager** — an Electron system-tray app supervising the queue pipeline.
 
 ## Project Structure
 
 ```
 portfolio/
-  index.html          HTML structure
-  style.css           All styles (light/dark theme via CSS variables)
-  script.js           Theme toggle, particles, scroll spy, contact form
-  profile.jpg         Profile picture
-  root-ai-preview.png Root AI showcase screenshot
-  vercel.json         Vercel deployment config
+  index.html           HTML structure
+  cv.html              Standalone CV / résumé page
+  style.css            All styles (light/dark theme via CSS variables)
+  script.js            Theme toggle, particles, scroll spy, contact form
+  profile.jpg          Profile picture
+  root-ai-preview.png  Root AI platform dashboard screenshot
+  root-ai-home.png     Root AI landing page screenshot
+  root-ai-pricing.png  Root AI pricing page screenshot
+  vercel.json          Vercel deployment config
 ```
 
 ## Contact
 
-- **Email:** hello@johndoe.dev
-- **GitHub:** [johndoe](https://github.com/johndoe)
-- **Location:** Metro Manila, Philippines
+- **Email:** javelcnathan31@gmail.com
+- **GitHub:** [RHKfullstack](https://github.com/RHKfullstack)
+- **Live project:** [root-ai.org](https://root-ai.org)
+- **Location:** Panabo, Davao del Norte, Philippines
 
 ---
 
-Open for freelance work.
+Open for remote work.

@@ -14,54 +14,97 @@ ul{padding-left:20px}li{margin-bottom:6px}
 .project{margin-bottom:16px}.project h3{margin-bottom:2px;font-size:1rem}
 .project p{color:#555;margin:2px 0;font-size:0.88rem}
 a{color:#6366f1}
+.meta{color:#777;font-size:0.82rem}
 </style>
 </head>
 <body>
 
 <h1>Alejandro <span>Andres</span></h1>
-<p class="contact">Panabo, Philippines | javelcnathan31@gmail.com | github.com/RHKfullstack</p>
+<p class="contact">Panabo, Davao del Norte, Philippines | javelcnathan31@gmail.com | github.com/RHKfullstack | root-ai.org</p>
 
 <h2>PROFESSIONAL SUMMARY</h2>
-<p>Freelance full-stack developer with 5+ years of experience building web applications, AI platforms, and SaaS products. Core expertise in Laravel, React, Vue, MySQL, and Redis. Solo developer capable of handling projects end-to-end — from database architecture to pixel-perfect frontends and deployment.</p>
+<p>Self-taught full-stack developer with 5+ years of hands-on experience building production web applications, AI platforms, and SaaS products. Core expertise in Laravel, React, Vue, MySQL, and Redis. Solo developer who owns projects end-to-end — database architecture, backend APIs, AI integrations, real-time systems, desktop tooling, and deployment. Comfortable picking up new languages and stacks on the job.</p>
 
 <h2>TECHNICAL SKILLS</h2>
 <p>
-<span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">React</span><span class="tag">Vue.js</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">TailwindCSS</span><span class="tag">Node.js</span><span class="tag">Electron</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">REST APIs</span><span class="tag">WebSockets</span>
+<span class="tag">Laravel 13</span><span class="tag">PHP 8.3</span><span class="tag">React 19</span><span class="tag">Vue 3</span><span class="tag">Alpine.js</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">TailwindCSS 4</span><span class="tag">Vite</span><span class="tag">Node.js</span><span class="tag">Electron</span><span class="tag">Filament 5</span><span class="tag">Laravel Reverb</span><span class="tag">Laravel Horizon</span><span class="tag">Laravel Pulse</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">REST APIs</span><span class="tag">WebSockets</span><span class="tag">OAuth</span><span class="tag">Webhooks</span>
 </p>
 
-<h2>FEATURED PROJECT</h2>
+<h2>FEATURED PROJECTS</h2>
+
 <div class="project">
-<h3>Root AI — all-in-one AI creative platform</h3>
-<p><strong>Stack:</strong> Laravel 13, React 19, TailwindCSS 4, MySQL, Redis</p>
-<p><strong>Role:</strong> Solo developer (full-stack)</p>
+<h3>Root AI — all-in-one AI creative platform <span class="meta">(root-ai.org)</span></h3>
+<p><strong>Stack:</strong> Laravel 13, PHP 8.3, React 19, Alpine.js, TailwindCSS 4, Vite 7, MySQL, Redis</p>
+<p><strong>Role:</strong> Solo developer (full-stack, DevOps, desktop apps)</p>
 <ul>
-<li>Built complete SaaS platform with multi-model AI chat (DeepSeek), music studio (20+ features), video generation, and collaborative workspaces</li>
-<li>Integrated GitHub OAuth authentication, PayMongo subscriptions, real-time WebSockets (Laravel Reverb), and background queue processing (Laravel Horizon)</li>
-<li>Implemented Filament 5 admin dashboard for user/role/subscription management with 22 database tables</li>
-<li>Deployed on production VPS with Cloudflare Tunnel</li>
+<li>Designed and built a complete commercial SaaS platform from scratch — multi-model AI chat with streaming, deep reasoning, web search with sources, file analysis (PDF/DOCX/XLSX/images/ZIP), image generation, conversation memory, and voice input/output</li>
+<li>Built the Music Studio (text-to-music, lyrics, vocal separation, covers, mashups, track extension, WAV conversion, MIDI, music video) and the Video Studio (text-to-video, image-to-video) on top of third-party AI providers (Suno v4, Grok Imagine, Nano Banana 2)</li>
+<li>Implemented interactive Artifacts with live preview and shareable tokens, plus collaborative Workspaces with GitHub repository integration</li>
+<li>Integrated GitHub OAuth, PayMongo subscriptions with plan-based quota enforcement, Brevo transactional email, and reCAPTCHA v2 login protection</li>
+<li>Built real-time WebSocket broadcasting (Laravel Reverb), background queue processing (Laravel Horizon + Redis), and app health monitoring (Laravel Pulse)</li>
+<li>Implemented a Filament 5 admin dashboard for users, roles, subscriptions, usage logs, and AI generation history</li>
+<li>Scaled to 22 Eloquent models, 16 controllers, 70+ web routes, and 20+ schema migrations</li>
+<li>Deployed and operated in production on a self-hosted server behind a Cloudflare Tunnel</li>
+</ul>
+</div>
+
+<div class="project">
+<h3>Root AI Agent — AI coding agent running on the user's own machine</h3>
+<p><strong>Stack:</strong> Electron (desktop app), Node.js, headless CLI, Laravel command-queue API</p>
+<p><strong>Role:</strong> Solo developer</p>
+<ul>
+<li>Built a Kilo Code-style coding agent that lives inside the normal chat: the user asks "fix the login bug in my shop project" and the AI inspects, edits, backs up, and verifies files on their own computer</li>
+<li>Implemented a long-polling command-queue architecture (browser → server → agent app) with streamed tool activity and per-machine token authentication</li>
+<li>Agent tools: <em>list_projects, select_project, list_files, read_file, search_code, edit_file, write_file, run_command</em></li>
+<li>Device repair tools: <em>system_info, list_processes, kill_process</em> — diagnose and fix hangs, high CPU/memory, and stuck processes on Windows and macOS</li>
+<li>Hardened with a sensitive-file blocklist (.env, keys, certificates), project-root confinement, executable allowlist with no shell chaining, desktop-only device gate, and full audit logging</li>
+<li>Automatic backup of every edited file, cross-platform PATH handling (Homebrew/nvm), and process-tree kill on command timeout</li>
+</ul>
+</div>
+
+<div class="project">
+<h3>Root AI Workers Manager — desktop service supervisor</h3>
+<p><strong>Stack:</strong> Electron, Node.js, Windows tray integration</p>
+<p><strong>Role:</strong> Solo developer</p>
+<ul>
+<li>Built an Electron system-tray app that starts, stops, restarts, and auto-deploys queue workers per queue (text, image, default)</li>
+<li>Auto-restarts dead workers, auto-starts Redis / MySQL / Reverb, and provides failed-job inspection and cleanup from the tray</li>
+<li>Delivered as a portable Windows build; used daily to keep the production queue pipeline running unattended</li>
 </ul>
 </div>
 
 <h2>WHAT I CAN BUILD</h2>
 <ul>
-<li>Full-stack web applications & SaaS platforms</li>
-<li>AI integration & automation (LLM APIs, chatbots, content generation)</li>
-<li>Admin dashboards & internal tools (Filament)</li>
-<li>Payment & subscription systems (PayMongo)</li>
-<li>Desktop applications (Electron)</li>
-<li>REST APIs & real-time systems (WebSockets)</li>
+<li>Full-stack web applications &amp; SaaS platforms (Laravel + React/Vue)</li>
+<li>AI integration &amp; automation — LLM APIs, streaming chat, agents, content generation</li>
+<li>AI coding agents that operate on a user's local machine (Electron + command queue)</li>
+<li>Admin dashboards &amp; internal tools (Filament)</li>
+<li>Payment &amp; subscription systems (PayMongo), OAuth, webhooks</li>
+<li>Desktop applications &amp; system-tray utilities (Electron)</li>
+<li>REST APIs, real-time systems (WebSockets), and background queue pipelines</li>
+<li>Deployment &amp; operations — VPS, Cloudflare Tunnel, Docker, Redis, Horizon, Pulse</li>
 </ul>
 
 <h2>ADDITIONAL SKILLS</h2>
 <ul>
-<li>AI-assisted development — daily use of AI tools for faster development without sacrificing quality</li>
-<li>DB architecture — complex database design with MySQL/PostgreSQL</li>
-<li>API integration — third-party services (payment gateways, AI providers, OAuth, webhooks)</li>
-<li>Deployment — VPS, Vercel, Cloudflare, Docker</li>
+<li><strong>AI-assisted development</strong> — daily use of AI tooling to ship faster without sacrificing code quality</li>
+<li><strong>Database architecture</strong> — complex schema design and query optimisation with MySQL/PostgreSQL/Redis</li>
+<li><strong>API integration</strong> — payment gateways, AI providers, OAuth, SMTP, webhooks</li>
+<li><strong>Security awareness</strong> — blocklists, allowlists, token auth, SSRF/CSRF hardening, audit logging</li>
+<li><strong>Self-taught</strong> — experience-based developer; no formal IT degree, 5+ years of shipped production work</li>
+</ul>
+
+<h2>PROJECT &amp; VERSION HISTORY</h2>
+<ul>
+<li><strong>v2.4</strong> (Aug 2026) — Device repair tools, macOS support, process-tree kill on timeout</li>
+<li><strong>v2.3</strong> (Aug 2026) — Project Repair Agent + Root AI Agent desktop app</li>
+<li><strong>v2.2</strong> (Aug 2026) — Workers Manager desktop tray app</li>
+<li><strong>v2.1</strong> (Jun 2026) — Chat UX, OAuth CSRF fix, SSRF protection, admin improvements</li>
+<li><strong>v1.0</strong> (Apr 2026) — Initial release: multi-model chat, music studio, video studio, artifacts, workspaces</li>
 </ul>
 
 <hr style="margin-top:30px;border-color:#eee"/>
-<p style="text-align:center;color:#999;font-size:0.8rem">Open for remote freelance work — portfolio-dro1.vercel.app</p>
+<p style="text-align:center;color:#999;font-size:0.8rem">Open for remote work — root-ai.org &middot; github.com/RHKfullstack</p>
 
 </body>
 </html>
